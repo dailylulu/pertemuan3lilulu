@@ -1,0 +1,42 @@
+<html>
+    <head>
+	<link rel="stylesheet" href="leaflet/leaflet.css"/>
+ <script src="leaflet/leaflet.js"></script>
+<link rel="stylesheet" href="leaflet/leaflet.groupedlayercontrol.css"/> 
+<script src="leaflet/leaflet.groupedlayercontrol.js"></script>																											
+    </head>
+	<body>
+<!-- peta akan ditampilkan disini -->
+         <div  style="height:500px" id="mapid"></div>
+    </body>
+	
+	<script src="uy.js"></script>
+<script>
+
+</script>
+</html>
+<script>
+	var mymap = L.map('mapid').setView([-6.263793150472606, 106.97903005319883], 13);
+	var GoogleMaps = new L.TileLayer('https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', { 
+     opacity: 1.0, attribution: 'Ketrampilan Berkehidupan dan WEBSIG UMS'
+}).addTo(mymap);
+var GoogleSatelliteHybrid = L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', { 
+     maxZoom: 22, 
+     attribution: 'Ketrampilan Berkehidupan dan WEBSIG UMS' 
+});
+
+var baseLayers = {
+     'Google Satellite Hybrid': GoogleSatelliteHybrid,
+     'Google Maps': GoogleMaps,
+}; 
+
+L.control.groupedLayers(baseLayers).addTo(mymap);
+
+var polyg2 = L.geoJson(polygons.features).addTo(mymap);
+var marker = L.marker([ -6.277315,106.983778]).addTo(mymap);
+marker.bindPopup("<b>Informasi</b><br>Rumah Paw – E1800000");
+
+	
+    </script>
+
+</html>
